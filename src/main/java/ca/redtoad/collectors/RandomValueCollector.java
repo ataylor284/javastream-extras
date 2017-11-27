@@ -11,12 +11,12 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
- * Collects one value from the stream, where each value has equal
- * probability.
+ * Collects one value from the stream at random, where each value has
+ * an equal probability of being chosen.
  */
 public class RandomValueCollector<T> implements Collector<T, RandomValueCollector.Accumulator<T>, Optional<T>> {
 
-    private Random rand;
+    private final Random rand;
 
     /**
      * Constructs new RandomValueCollector that uses a
@@ -45,6 +45,8 @@ public class RandomValueCollector<T> implements Collector<T, RandomValueCollecto
         }
 
         void consume(T item) {
+            // accept next item as the selected item with a probability of (1/count)
+            // this gives 1/1 for item 0, 1/2 for item 1, 1/3 for item 2, etc.
             count += 1;
             if (rand.nextInt(count) == 0) {
                 value = item;
@@ -89,6 +91,6 @@ public class RandomValueCollector<T> implements Collector<T, RandomValueCollecto
 
     @Override
     public Set<Collector.Characteristics> characteristics() {
-        return EnumSet.of(Collector.Characteristics.UNORDERED);
+        return EnumSet.noneOf(Collector.Characteristics.class);
     }
 }
