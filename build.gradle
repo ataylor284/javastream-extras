@@ -4,8 +4,8 @@ apply plugin: 'jacoco'
 apply plugin: 'maven'
 apply plugin: 'signing'
 
-version = '1.0-SNAPSHOT'
 group = 'ca.redtoad'
+version = "${version}"
 
 repositories {
     mavenLocal()
