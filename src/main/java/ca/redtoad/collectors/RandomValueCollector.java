@@ -54,14 +54,11 @@ public class RandomValueCollector<T> implements Collector<T, RandomValueCollecto
         }
 
         Accumulator<T> combine(Accumulator<T> other) {
-            Accumulator<T> combined = new Accumulator<>(rand);
-            combined.count = count + other.count;
-            if (rand.nextInt(combined.count) < count) {
-                combined.value = value;
-            } else {
-                combined.value = other.value;
+            if (rand.nextInt(count + other.count) >= count) {
+                value = other.value;
             }
-            return combined;
+            count += other.count;
+            return this;
         }
 
         Optional<T> finish() {

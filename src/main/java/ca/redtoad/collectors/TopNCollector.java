@@ -44,13 +44,11 @@ public class TopNCollector<T extends Comparable<? super T>> implements Collector
         }
 
         Accumulator<T> combine(Accumulator<T> other) {
-            Accumulator<T> combined = new Accumulator<>(n);
-            combined.q.addAll(q);
-            combined.q.addAll(other.q);
-            while (combined.q.size() > n) {
-                combined.q.poll();
+            q.addAll(other.q);
+            while (q.size() > n) {
+                q.poll();
             }
-            return combined;
+            return this;
         }
 
         List<T> finish() {
