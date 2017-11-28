@@ -6,6 +6,7 @@ apply plugin: 'signing'
 
 group = 'ca.redtoad'
 version = "${version}"
+ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
 
 repositories {
     mavenLocal()
@@ -45,6 +46,7 @@ artifacts {
 
 // sign archives
 signing {
+    required { isReleaseVersion && gradle.taskGraph.hasTask("uploadArchives") }
     sign configurations.archives
 }
 
