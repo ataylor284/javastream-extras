@@ -19,7 +19,7 @@ stream value type must implement the Comparable interface.
 
      // collect one value from the stream where each value has equal
      // probability of being chosen
-     IntStream.range(1, 20).collect(new RandomValueCollector())
+     IntStream.range(1, 20).boxed().collect(new RandomValueCollector())
 
      // collect only the top 5 values using the objects natural ordering
-     IntStream.range(1, 20).collect(new TopNCollector(5))
+     IntStream.range(1, 20).boxed().collect(new TopNCollector(5))
