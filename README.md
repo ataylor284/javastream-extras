@@ -1,6 +1,8 @@
 Extras for Java 8+ Streams
 ==========================
 
+[![Build Status](https://travis-ci.org/ataylor284/javastream-extras.png?branch=master)](https://travis-ci.org/ataylor284/javastream-extras)
+
 This provides some extra collectors to use with Java 8+ streams.
 
 The collectors provided are:
