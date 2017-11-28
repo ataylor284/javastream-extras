@@ -45,6 +45,9 @@ public class RandomValueCollector<T> implements Collector<T, RandomValueCollecto
         }
 
         void consume(T item) {
+            if (item == null) {
+                throw new NullPointerException();
+            }
             // accept next item as the selected item with a probability of (1/count)
             // this gives 1/1 for item 0, 1/2 for item 1, 1/3 for item 2, etc.
             count += 1;

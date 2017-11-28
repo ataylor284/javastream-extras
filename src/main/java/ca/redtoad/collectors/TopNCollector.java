@@ -37,7 +37,9 @@ public class TopNCollector<T extends Comparable<? super T>> implements Collector
         }
 
         void consume(T item) {
-            q.offer(item);
+            if (q.size() < n || item.compareTo(q.peek()) > 0) {
+                q.offer(item);
+            }
             if (q.size() > n) {
                 q.poll();
             }

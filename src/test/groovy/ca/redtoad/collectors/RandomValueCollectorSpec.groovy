@@ -22,6 +22,16 @@ class RandomValueCollectorSpec extends Specification {
         stream.collect(collector) == Optional.of('hello')
     }
 
+    def 'Collecting stream with null should throw NPE.'() {
+        when:
+        def stream = [null].stream()
+        def collector = new RandomValueCollector()
+        stream.collect(collector)
+
+        then:
+        thrown(NullPointerException)
+    }
+
     def 'Collecting multiple value stream should return every unique value.'() {
         when:
         def items = ['foo', 'bar', 'blat', 'greep'] as Set

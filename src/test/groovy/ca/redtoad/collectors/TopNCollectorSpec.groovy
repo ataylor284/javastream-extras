@@ -13,6 +13,16 @@ class TopNCollectorSpec extends Specification {
         stream.collect(collector) == []
     }
 
+    def 'Collecting stream containing null should throw NPE.'() {
+        when:
+        def stream = [null].stream()
+        def collector = new TopNCollector(10)
+        stream.collect(collector)
+
+        then:
+        thrown(NullPointerException)
+    }
+
     def 'Collecting top 3 from length 10 stream should return top 3 items.'() {
         when:
         def stream = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].stream()
