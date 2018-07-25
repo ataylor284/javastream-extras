@@ -1,7 +1,7 @@
 Extras for Java 8+ Streams
 ==========================
 
-[![Build Status](https://travis-ci.org/ataylor284/javastream-extras.png?branch=master)](https://travis-ci.org/ataylor284/javastream-extras)
+[![Build Status](https://travis-ci.org/ataylor284/javastream-extras.png?branch=master)](https://travis-ci.org/ataylor284/javastream-extras) [![DepShield Badge](https://bo8007mvmg.execute-api.us-west-1.amazonaws.com/prod/badges/ataylor284/javastream-extras/depshield.svg)](https://sonatype.github.io/depshield-github-pages)
 
 This provides some extra collectors to use with Java 8+ streams.
 
